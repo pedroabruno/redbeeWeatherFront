@@ -13,18 +13,18 @@
             <thead>
                <tr>
                  <th>Nombre</th>
-                 <th>Pais</th>
-                 <th>Viento</th>
-                 <th>Humedad</th>
+                 <th>Codigo</th>
+                 <th>Temperatura</th>
+                 <th>Condicion</th>
                  <th>       </th>
                </tr>
             </thead>
             <tbody>
                <tr *ngFor="let ciudad of ciudades; let i = index">
                   <td>{{ciudad.nombre}}</td>
-                  <td>{{ciudad.pais}}</td>
-                  <td>{{ciudad.viento}}</td>
-                  <td>{{ciudad.humedad}}</td>
+                  <td>{{ciudad.codigo}}</td>
+                  <td>{{ciudad.temperatura}}</td>
+                  <td>{{ciudad.condicion}}</td>
                   <td><button type="button" name="button" class="btn btn-outline-danger" (click)="borrarCiudad(ciudad.nombre)" > Borrar Ciudad </button></td>
                </tr>
             </tbody>
@@ -40,7 +40,7 @@
         <thead>
           <tr>
             <th><span style="height:100%; width:5px;overflow:auto">Nombre Ciudad</span></th>
-            <th><input type="text" name="idCiudad"></th>
+            <th><input type="text" name="idCiudad" (keyup)="onKey($event)" ></th>
             <th><button class="btn btn-sm btn-success" (click)="agregarCiudad()">Agregar Ciudad</button></th>
           </tr>
         </thead>

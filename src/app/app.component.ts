@@ -35,14 +35,13 @@ export class AppComponent {
   }
 
   agregarCiudad(){
-    let ciudad = document.getElementsByName("idCiudad")[0].value;
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type':'application/json',
         'access-control-allow-origin':'http://localhost:4200/',
       })
     }
-    let json = {"ciudad":ciudad,"usuario":this.getNombreUsuario()};
+    let json = {"ciudad":this.ciudad,"usuario":this.getNombreUsuario()};
     this.httpClient.post(`http://localhost:8080/addLocation`,json,httpOptions)
     .subscribe((data: any) => {
       this.getListaCiudades();
@@ -67,4 +66,9 @@ export class AppComponent {
     var cadena = window.location.href;
     return cadena.slice(29);
   }
+
+  onKey(event: any) {
+    this.ciudad = event.target.value;
+  }
+
 }
