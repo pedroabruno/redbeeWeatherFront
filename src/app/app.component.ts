@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,8 @@ export class AppComponent {
     .subscribe((data: any) => {
       this.ciudades = data.listaCiudades;
     });
+   	const source = interval(1000 * 30);
+	const subscribe = source.subscribe(val => this.getListaCiudades());
   }
 
   getListaCiudades(){
